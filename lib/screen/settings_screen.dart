@@ -9,7 +9,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  double maxNumber = 10000;
+  double maxNumber = 1000;
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +41,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               Slider(
                   value: maxNumber,
-                  min: 10000,
-                  max: 1000000,
+                  min: 1000,
+                  max: 100000,
                   onChanged: (double val) {
                     setState((){
                       maxNumber = val;
                     });
                   }),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop(
+                    maxNumber.toInt()
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   primary: red_color,
                 ),
